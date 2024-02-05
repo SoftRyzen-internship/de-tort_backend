@@ -20,6 +20,7 @@
     "@strapi/plugin-users-permissions": "4.19.0",
     "@strapi/provider-upload-cloudinary": "^4.19.0",
     "@strapi/strapi": "4.19.0",
+    "@strapi/typescript-utils": "^4.19.0",
     "custom-slug": "^2.1.1",
     "pg": "8.8.0",
     "react": "^18.0.0",
