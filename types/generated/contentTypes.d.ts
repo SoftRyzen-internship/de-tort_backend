@@ -781,19 +781,26 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiAchievementAchievement extends Schema.CollectionType {
+export interface ApiAchievementAchievement extends Schema.SingleType {
   collectionName: 'achievements';
   info: {
     singularName: 'achievement';
     pluralName: 'achievements';
-    displayName: 'Achievement';
+    displayName: 'Achievements';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
-    achievementType: Attribute.UID;
+    achievement: Attribute.Component<'achievements.achievement', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 3;
+          max: 3;
+        },
+        number
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -818,12 +825,19 @@ export interface ApiContactContact extends Schema.SingleType {
     singularName: 'contact';
     pluralName: 'contacts';
     displayName: 'Contacts';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    phone: Attribute.String & Attribute.Required & Attribute.Unique;
+    phone: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        minLength: 13;
+        maxLength: 17;
+      }>;
     instagram: Attribute.Component<'links.link'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -855,7 +869,12 @@ export interface ApiFaqFaq extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Question: Attribute.Text & Attribute.Required & Attribute.Unique;
+    Question: Attribute.Text &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
     Answer: Attribute.Text & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

@@ -2,6 +2,6 @@
  * achievement controller
  */
 
-import { factories } from "@strapi/strapi";
+import { factories } from '@strapi/strapi'
 
-export default factories.createCoreController("api::achievement.achievement");
+export default factories.createCoreController('api::achievement.achievement');

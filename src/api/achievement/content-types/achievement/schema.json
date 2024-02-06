@@ -1,21 +1,23 @@
 {
-  "kind": "collectionType",
+  "kind": "singleType",
   "collectionName": "achievements",
   "info": {
     "singularName": "achievement",
     "pluralName": "achievements",
-    "displayName": "Achievement"
+    "displayName": "Achievements"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
-    "achievementType": {
-      "type": "uid"
+    "achievement": {
+      "type": "component",
+      "repeatable": true,
+      "component": "achievements.achievement",
+      "required": true,
+      "max": 3,
+      "min": 3
     }
   }
 }

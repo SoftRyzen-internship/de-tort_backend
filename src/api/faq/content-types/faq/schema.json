@@ -15,7 +15,8 @@
     "Question": {
       "type": "text",
       "required": true,
-      "unique": true
+      "unique": true,
+      "maxLength": 100
     },
     "Answer": {
       "type": "text",

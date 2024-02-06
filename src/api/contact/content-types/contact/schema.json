@@ -4,7 +4,8 @@
   "info": {
     "singularName": "contact",
     "pluralName": "contacts",
-    "displayName": "Contacts"
+    "displayName": "Contacts",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,7 +15,10 @@
     "phone": {
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": true,
+      "regex": "^[+][0-9() -]+$",
+      "maxLength": 17,
+      "minLength": 13
     },
     "instagram": {
       "displayName": "Link",

@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_achievements_achievements",
+  "info": {
+    "displayName": "Achievement",
+    "icon": "crown",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": false,
+      "minLength": 8,
+      "maxLength": 30
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "years",
+        "clients",
+        "cakes"
+      ],
+      "required": true
+    }
+  }
+}
