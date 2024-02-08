@@ -869,13 +869,13 @@ export interface ApiFaqFaq extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Question: Attribute.Text &
+    question: Attribute.Text &
       Attribute.Required &
       Attribute.Unique &
       Attribute.SetMinMaxLength<{
         maxLength: 100;
       }>;
-    Answer: Attribute.Text & Attribute.Required;
+    answer: Attribute.Text & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

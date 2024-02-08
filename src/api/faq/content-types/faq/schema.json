@@ -12,13 +12,13 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Question": {
+    "question": {
       "type": "text",
       "required": true,
       "unique": true,
       "maxLength": 100
     },
-    "Answer": {
+    "answer": {
       "type": "text",
       "required": true
     }
