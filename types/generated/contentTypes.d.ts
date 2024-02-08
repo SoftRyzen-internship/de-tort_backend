@@ -903,7 +903,7 @@ export interface ApiReviewReview extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         maxLength: 250;
       }>;
-    date: Attribute.String & Attribute.Required;
+    date: Attribute.Date & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -21,7 +21,7 @@
       "maxLength": 250
     },
     "date": {
-      "type": "string",
+      "type": "date",
       "required": true
     }
   }
