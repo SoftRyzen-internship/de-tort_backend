@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_images_topping_images",
+  "info": {
+    "displayName": "Topping Image",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "layers": {
+      "type": "enumeration",
+      "enum": [
+        "single",
+        "double"
+      ],
+      "default": "single",
+      "required": true
+    },
+    "image": {
+      "type": "component",
+      "repeatable": false,
+      "component": "images.image"
+    }
+  }
+}

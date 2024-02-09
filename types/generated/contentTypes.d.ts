@@ -819,6 +819,61 @@ export interface ApiAchievementAchievement extends Schema.SingleType {
   };
 }
 
+export interface ApiCakeCake extends Schema.CollectionType {
+  collectionName: 'cakes';
+  info: {
+    singularName: 'cake';
+    pluralName: 'cakes';
+    displayName: 'Cakes';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    slug: Attribute.UID & Attribute.Required;
+    cake_category: Attribute.Enumeration<
+      [
+        'Mini Cakes',
+        'Bento Cakes',
+        'Middle Cakes (1-1.5 kg)',
+        'Big Cakes (2+ kg)'
+      ]
+    > &
+      Attribute.Required;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        maxLength: 16;
+      }>;
+    description: Attribute.RichText & Attribute.Required;
+    price: Attribute.RichText;
+    decor: Attribute.Text;
+    portion_size: Attribute.Component<'portions.portion-size'>;
+    images: Attribute.Component<'images.image', true> &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    production_time: Attribute.String & Attribute.Required;
+    toppings: Attribute.Relation<
+      'api::cake.cake',
+      'manyToMany',
+      'api::topping.topping'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::cake.cake', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::cake.cake', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiContactContact extends Schema.SingleType {
   collectionName: 'contacts';
   info: {
@@ -922,6 +977,56 @@ export interface ApiReviewReview extends Schema.CollectionType {
   };
 }
 
+export interface ApiToppingTopping extends Schema.CollectionType {
+  collectionName: 'toppings';
+  info: {
+    singularName: 'topping';
+    pluralName: 'toppings';
+    displayName: 'Toppings';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    cakes: Attribute.Relation<
+      'api::topping.topping',
+      'manyToMany',
+      'api::cake.cake'
+    >;
+    images: Attribute.Component<'images.topping-image', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 2;
+        },
+        number
+      >;
+    description: Attribute.Text & Attribute.Required;
+    uniqe: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
+    price_double: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'100 / 100 \u0433\u0440\u0430\u043C'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::topping.topping',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::topping.topping',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -941,9 +1046,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::achievement.achievement': ApiAchievementAchievement;
+      'api::cake.cake': ApiCakeCake;
       'api::contact.contact': ApiContactContact;
       'api::faq.faq': ApiFaqFaq;
       'api::review.review': ApiReviewReview;
+      'api::topping.topping': ApiToppingTopping;
     }
   }
 }

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_portions_portion_sizes",
+  "info": {
+    "displayName": "Portion Size",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "size": {
+      "type": "string",
+      "required": true
+    },
+    "label": {
+      "type": "string",
+      "required": true,
+      "default": "Розрахований:"
+    }
+  }
+}

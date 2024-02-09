@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cakes",
+  "info": {
+    "singularName": "cake",
+    "pluralName": "cakes",
+    "displayName": "Cakes",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "cake_category": {
+      "type": "enumeration",
+      "enum": [
+        "Mini Cakes",
+        "Bento Cakes",
+        "Middle Cakes (1-1.5 kg)",
+        "Big Cakes (2+ kg)"
+      ],
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 16
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "price": {
+      "type": "richtext"
+    },
+    "decor": {
+      "type": "text"
+    },
+    "portion_size": {
+      "displayName": "Portion Size",
+      "type": "component",
+      "repeatable": false,
+      "component": "portions.portion-size"
+    },
+    "images": {
+      "type": "component",
+      "repeatable": true,
+      "component": "images.image",
+      "min": 1
+    },
+    "production_time": {
+      "type": "string",
+      "required": true
+    },
+    "toppings": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::topping.topping",
+      "mappedBy": "cakes"
+    }
+  }
+}

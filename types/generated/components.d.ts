@@ -30,8 +30,22 @@ export interface ImagesImage extends Schema.Component {
     image_description: Attribute.Text &
       Attribute.Required &
       Attribute.SetMinMaxLength<{
-        maxLength: 60;
+        maxLength: 120;
       }>;
+  };
+}
+
+export interface ImagesToppingImage extends Schema.Component {
+  collectionName: 'components_images_topping_images';
+  info: {
+    displayName: 'Topping Image';
+    description: '';
+  };
+  attributes: {
+    layers: Attribute.Enumeration<['single', 'double']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'single'>;
+    image: Attribute.Component<'images.image'>;
   };
 }
 
@@ -46,12 +60,28 @@ export interface LinksLink extends Schema.Component {
   };
 }
 
+export interface PortionsPortionSize extends Schema.Component {
+  collectionName: 'components_portions_portion_sizes';
+  info: {
+    displayName: 'Portion Size';
+    description: '';
+  };
+  attributes: {
+    size: Attribute.String & Attribute.Required;
+    label: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'\u0420\u043E\u0437\u0440\u0430\u0445\u043E\u0432\u0430\u043D\u0438\u0439:'>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'achievements.achievement': AchievementsAchievement;
       'images.image': ImagesImage;
+      'images.topping-image': ImagesToppingImage;
       'links.link': LinksLink;
+      'portions.portion-size': PortionsPortionSize;
     }
   }
 }
