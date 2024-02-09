@@ -19,6 +19,22 @@ export interface AchievementsAchievement extends Schema.Component {
   };
 }
 
+export interface ImagesImage extends Schema.Component {
+  collectionName: 'components_images_images';
+  info: {
+    displayName: 'Image';
+    description: '';
+  };
+  attributes: {
+    photo: Attribute.Media & Attribute.Required;
+    image_description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 60;
+      }>;
+  };
+}
+
 export interface LinksLink extends Schema.Component {
   collectionName: 'components_links_links';
   info: {
@@ -34,6 +50,7 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'achievements.achievement': AchievementsAchievement;
+      'images.image': ImagesImage;
       'links.link': LinksLink;
     }
   }
