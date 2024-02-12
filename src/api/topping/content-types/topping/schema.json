@@ -34,7 +34,7 @@
       "type": "text",
       "required": true
     },
-    "uniqe": {
+    "unique": {
       "type": "boolean",
       "default": false,
       "required": true
