@@ -1005,8 +1005,7 @@ export interface ApiSweetSweet extends Schema.CollectionType {
     description: Attribute.RichText & Attribute.Required;
     price: Attribute.RichText & Attribute.Required;
     decor: Attribute.Text;
-    portion_size: Attribute.Component<'portions.portion-size', true> &
-      Attribute.Required;
+    portion_size: Attribute.Component<'portions.portion-size'>;
     images: Attribute.Component<'images.image', true>;
     tastes: Attribute.Text & Attribute.Required;
     slug: Attribute.UID & Attribute.Required;

@@ -45,9 +45,9 @@
     },
     "portion_size": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "portions.portion-size",
-      "required": true
+      "required": false
     },
     "images": {
       "type": "component",
