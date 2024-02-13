@@ -977,6 +977,57 @@ export interface ApiReviewReview extends Schema.CollectionType {
   };
 }
 
+export interface ApiSweetSweet extends Schema.CollectionType {
+  collectionName: 'sweets';
+  info: {
+    singularName: 'sweet';
+    pluralName: 'sweets';
+    displayName: 'Sweets';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    sweets_category: Attribute.Enumeration<
+      [
+        'Cupcakes',
+        'Cheesecakes',
+        'Sweet Sets',
+        'Cookies',
+        'Macaron',
+        'Cake-Pops'
+      ]
+    > &
+      Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    production_time: Attribute.String & Attribute.Required;
+    description: Attribute.RichText & Attribute.Required;
+    price: Attribute.RichText & Attribute.Required;
+    decor: Attribute.Text;
+    portion_size: Attribute.Component<'portions.portion-size', true> &
+      Attribute.Required;
+    images: Attribute.Component<'images.image', true>;
+    tastes: Attribute.Text & Attribute.Required;
+    slug: Attribute.UID & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::sweet.sweet',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::sweet.sweet',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiToppingTopping extends Schema.CollectionType {
   collectionName: 'toppings';
   info: {
@@ -1050,6 +1101,7 @@ declare module '@strapi/types' {
       'api::contact.contact': ApiContactContact;
       'api::faq.faq': ApiFaqFaq;
       'api::review.review': ApiReviewReview;
+      'api::sweet.sweet': ApiSweetSweet;
       'api::topping.topping': ApiToppingTopping;
     }
   }

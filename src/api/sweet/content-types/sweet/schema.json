@@ -1,0 +1,66 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sweets",
+  "info": {
+    "singularName": "sweet",
+    "pluralName": "sweets",
+    "displayName": "Sweets",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sweets_category": {
+      "type": "enumeration",
+      "enum": [
+        "Cupcakes",
+        "Cheesecakes",
+        "Sweet Sets",
+        "Cookies",
+        "Macaron",
+        "Cake-Pops"
+      ],
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "production_time": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "price": {
+      "type": "richtext",
+      "required": true
+    },
+    "decor": {
+      "type": "text"
+    },
+    "portion_size": {
+      "type": "component",
+      "repeatable": true,
+      "component": "portions.portion-size",
+      "required": true
+    },
+    "images": {
+      "type": "component",
+      "repeatable": true,
+      "component": "images.image"
+    },
+    "tastes": {
+      "type": "text",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    }
+  }
+}
