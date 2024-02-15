@@ -819,6 +819,41 @@ export interface ApiAchievementAchievement extends Schema.SingleType {
   };
 }
 
+export interface ApiB2BPageB2BPage extends Schema.SingleType {
+  collectionName: 'b2_b_pages';
+  info: {
+    singularName: 'b2-b-page';
+    pluralName: 'b2-b-pages';
+    displayName: 'B2B Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    heading: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 10;
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::b2-b-page.b2-b-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::b2-b-page.b2-b-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCakeCake extends Schema.CollectionType {
   collectionName: 'cakes';
   info: {
@@ -1096,6 +1131,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::achievement.achievement': ApiAchievementAchievement;
+      'api::b2-b-page.b2-b-page': ApiB2BPageB2BPage;
       'api::cake.cake': ApiCakeCake;
       'api::contact.contact': ApiContactContact;
       'api::faq.faq': ApiFaqFaq;

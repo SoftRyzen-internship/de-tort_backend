@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "b2_b_pages",
+  "info": {
+    "singularName": "b2-b-page",
+    "pluralName": "b2-b-pages",
+    "displayName": "B2B Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "text",
+      "required": true,
+      "minLength": 10
+    }
+  }
+}
