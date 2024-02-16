@@ -34,11 +34,6 @@
       "type": "text",
       "required": true
     },
-    "unique": {
-      "type": "boolean",
-      "default": false,
-      "required": true
-    },
     "price_double": {
       "type": "string",
       "required": true,

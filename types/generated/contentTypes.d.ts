@@ -1090,7 +1090,6 @@ export interface ApiToppingTopping extends Schema.CollectionType {
         number
       >;
     description: Attribute.Text & Attribute.Required;
-    unique: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
     price_double: Attribute.String &
       Attribute.Required &
       Attribute.DefaultTo<'100 / 100 \u0433\u0440\u0430\u043C'>;
