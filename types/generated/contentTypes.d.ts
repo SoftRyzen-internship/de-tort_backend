@@ -976,6 +976,38 @@ export interface ApiFaqFaq extends Schema.CollectionType {
   };
 }
 
+export interface ApiInformationInformation extends Schema.SingleType {
+  collectionName: 'information_s';
+  info: {
+    singularName: 'information';
+    pluralName: 'information-s';
+    displayName: 'Information';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    contract_offer: Attribute.RichText & Attribute.Required;
+    service_terms: Attribute.RichText & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::information.information',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::information.information',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiReviewReview extends Schema.CollectionType {
   collectionName: 'reviews';
   info: {
@@ -1134,6 +1166,7 @@ declare module '@strapi/types' {
       'api::cake.cake': ApiCakeCake;
       'api::contact.contact': ApiContactContact;
       'api::faq.faq': ApiFaqFaq;
+      'api::information.information': ApiInformationInformation;
       'api::review.review': ApiReviewReview;
       'api::sweet.sweet': ApiSweetSweet;
       'api::topping.topping': ApiToppingTopping;

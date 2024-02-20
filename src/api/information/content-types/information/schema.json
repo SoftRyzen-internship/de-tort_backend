@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "information_s",
+  "info": {
+    "singularName": "information",
+    "pluralName": "information-s",
+    "displayName": "Information",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "contract_offer": {
+      "type": "richtext",
+      "required": true
+    },
+    "service_terms": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}
