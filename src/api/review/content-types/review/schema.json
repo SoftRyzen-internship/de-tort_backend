@@ -18,7 +18,8 @@
     },
     "text": {
       "type": "richtext",
-      "maxLength": 250
+      "maxLength": 250,
+      "required": true
     },
     "date": {
       "type": "date",

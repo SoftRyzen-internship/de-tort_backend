@@ -1022,6 +1022,7 @@ export interface ApiReviewReview extends Schema.CollectionType {
   attributes: {
     author: Attribute.String & Attribute.Required;
     text: Attribute.RichText &
+      Attribute.Required &
       Attribute.SetMinMaxLength<{
         maxLength: 250;
       }>;
